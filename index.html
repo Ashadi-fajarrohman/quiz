@@ -75,7 +75,7 @@
 
   <div id="screen8" class="screen">
     <h2>Siapa yg suka marah?</h2>
-    <button onclick="nextScreen('screen9')">[nama]</button>
+    <button onclick="nextScreen('screen9')" id="btnNamaMarah">[nama]</button>
     <button onclick="nextScreen('screen9')">Aku</button>
     <button onclick="nextScreen('screen9')">Ya aku lah siapa lagi</button>
   </div>
@@ -96,7 +96,7 @@
 
   <div id="screen11" class="screen">
     <h2>Ini dia kado yg kamu tunggu-tunggu!</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Simple_Flower_icon.svg/1024px-Simple_Flower_icon.svg.png" alt="Bunga">
+    <img src="bunga.png" alt="Bunga">
     <p>Maaf ya ayang... cuman bunga... digital lagi... hehehehe</p>
     <h2>I love you 4ever 💞</h2>
   </div>
@@ -108,6 +108,7 @@
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       if (id === 'screen4') document.getElementById('nama4').innerText = nama;
+      if (id === 'screen8') document.getElementById('btnNamaMarah').innerText = nama;
     }
 
     function setNama() {
