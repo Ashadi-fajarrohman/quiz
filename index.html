@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Quiz</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #ffe6f0;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    .screen { display: none; }
+    .active { display: block; }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #ff99cc;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    img { max-width: 200px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div id="screen1" class="screen active">
+    <h2>Apakah kamu siap menjadi gila senyum-senyum sendiri?</h2>
+    <button onclick="nextScreen('screen2')">Siap</button>
+    <button onclick="nextScreen('screen2')">Siap ga siap harus siap</button>
+  </div>
+
+  <div id="screen2" class="screen">
+    <h2>Tuliskan nama anda</h2>
+    <input type="text" id="nama" />
+    <br><button onclick="setNama()">Lanjut</button>
+  </div>
+
+  <div id="screen3" class="screen">
+    <h2 id="sapaan"></h2>
+    <button onclick="nextScreen('screen4')">Lanjut</button>
+  </div>
+
+  <div id="screen4" class="screen">
+    <h2>Mana yg sangat menggambarkan <span id="nama4"></span>?</h2>
+    <button onclick="screen5('a')">Baik hati</button>
+    <button onclick="screen5('b')">Cantik banget</button>
+    <button onclick="screen5('c')">Pekerja keras</button>
+  </div>
+
+  <div id="screen5" class="screen">
+    <h2 id="jawaban5"></h2>
+    <button onclick="nextScreen('screen6')">Lanjut</button>
+  </div>
+
+  <div id="screen6" class="screen">
+    <h2>Siapa yg suka nangis?</h2>
+    <button onclick="screen7('a')">Aku</button>
+    <button onclick="screen7('b')">Pasanganmu</button>
+    <button onclick="screen7('c')">Dua-duanya</button>
+  </div>
+
+  <div id="screen7" class="screen">
+    <h2 id="jawaban7"></h2>
+    <button onclick="nextScreen('screen8')">Lanjut</button>
+  </div>
+
+  <div id="screen8" class="screen">
+    <h2>Siapa yg suka marah?</h2>
+    <button onclick="nextScreen('screen9')">[nama]</button>
+    <button onclick="nextScreen('screen9')">Aku</button>
+    <button onclick="nextScreen('screen9')">Ya aku lah siapa lagi</button>
+  </div>
+
+  <div id="screen9" class="screen">
+    <h2>Hehehehe bercanda sayang...<br>
+      Kalo aku pernah marahin kamu maafin yaa..<br>
+      Love youu 💖</h2>
+    <button onclick="nextScreen('screen10')">Lanjut</button>
+  </div>
+
+  <div id="screen10" class="screen">
+    <h2>Pilih kado</h2>
+    <button onclick="nextScreen('screen11')">Mobil</button>
+    <button onclick="nextScreen('screen11')">Perhiasan</button>
+    <button onclick="nextScreen('screen11')">Rumah</button>
+  </div>
+
+  <div id="screen11" class="screen">
+    <h2>Ini dia kado yg kamu tunggu-tunggu!</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Simple_Flower_icon.svg/1024px-Simple_Flower_icon.svg.png" alt="Bunga">
+    <p>Maaf ya ayang... cuman bunga... digital lagi... hehehehe</p>
+    <h2>I love you 4ever 💞</h2>
+  </div>
+
+  <script>
+    let nama = "";
+
+    function nextScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      if (id === 'screen4') document.getElementById('nama4').innerText = nama;
+    }
+
+    function setNama() {
+      nama = document.getElementById('nama').value;
+      document.getElementById('sapaan').innerText = `Hey ${nama} ayangku yg paling cantik!!!`;
+      nextScreen('screen3');
+    }
+
+    function screen5(jawaban) {
+      let pesan = "";
+      if (jawaban === 'a') pesan = `Emang ${nama} ini orangnya baik banget. Suka bantu orang lain tanpa pandang bulu.`;
+      else if (jawaban === 'b') pesan = `Cantiknya tiada taraaa!!! Membuatku terpesona tiap hariii 💖`;
+      else if (jawaban === 'c') pesan = `Wess jangan ditanya, mungkin moto hidupnya kerja kerja kerja!!`;
+      document.getElementById('jawaban5').innerText = pesan;
+      nextScreen('screen5');
+    }
+
+    function screen7(jawaban) {
+      let pesan = "";
+      if (jawaban === 'a') pesan = `Emang cengeng banget kek bayi 🐣`;
+      else if (jawaban === 'b') pesan = `Fitnah lebih kejam daripada pembunuhan 😆`;
+      else if (jawaban === 'c') pesan = `Maklum, dua-duanya kalo ketemu jadi bayi 🐥`;
+      document.getElementById('jawaban7').innerText = pesan;
+      nextScreen('screen7');
+    }
+  </script>
+</body>
+</html>
